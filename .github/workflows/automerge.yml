@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         # run the action
-      - uses: pashoo2/action-automerge_release@main
+      - uses: optimaxdev/action-automerge_release@main
         name: run_automerge
         id: run_automerge
         # PR must be successfully merged and repo succesfully initiated on the previous step
