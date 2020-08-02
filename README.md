@@ -1,3 +1,2 @@
 # test_github_actions
-Check it
-UPDATE AGAIN
+new url of the action optimaxdev/action-automerge_release
