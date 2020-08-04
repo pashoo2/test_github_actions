@@ -2,16 +2,13 @@ name: 'Automerge'
 on: push
 
 jobs:
-merge: # make sure the action works on a clean machine without building
-runs-on: ubuntu-latest
-steps:
-# run the action
- - uses: pashoo2/action-automerge_release@master
- name: run_automerge
- id: run_automerge
- with:
-  token: ${{ secrets.TOKEN }}
-  mainBranchName: 'master'
-  releaseBranchPrfix: 'rel'
-  releaseBranchTaskPrefix: 'v.'
-  automergePrLabel: 'automerge-conflict'
+  merge_to_releases: # make sure build/ci work properly
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: pashoo2/action-automerge_release@master
+        with:
+          token: ${{ secrets.TOKEN }}
+          mainBranchName: 'master'
+          releaseBranchPrfix: 'rel'
+          releaseBranchTaskPrefix: 'v.'
