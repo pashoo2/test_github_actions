@@ -1,21 +1,14 @@
-name: 'build-test'
-on: # rebuild any PRs and main branch changes
-  pull_request:
-    # only if PR closed
-    types: [closed]
+name: 'Automerge'
+on: push
 
 jobs:
-  test: # make sure the action works on a clean machine without building
+  merge_to_releases: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-        # run the action
-      - uses: optimaxdev/action-automerge_release@master
-        name: run_automerge
-        id: run_automerge
-        # PR must be successfully merged and repo succesfully initiated on the previous step
-        if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
+      - uses: actions/checkout@v2
+      - uses: pashoo2/action-automerge_release@master
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.TOKEN }}
           mainBranchName: 'master'
-          releaseBranchTaskPrefix: 'v.'
           releaseBranchPrfix: 'rel'
+          releaseBranchTaskPrefix: 'v.'
