@@ -1,3 +1,3 @@
 # test_github_actions
 use optimax
-merge again 5
+merge again 6
